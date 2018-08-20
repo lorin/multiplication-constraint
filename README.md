@@ -28,10 +28,10 @@ like:
 
 ```alloy
 fact MultiplicatinProblem {
-	IsSingleDigit[A]
-	IsSingleDigit[B]
-	IsSingleDigit[C]
-	IsSingleDigit[D]
+    IsSingleDigit[A]
+    IsSingleDigit[B]
+    IsSingleDigit[C]
+    IsSingleDigit[D]
     A !=B ; A!=C ; A!= D; B!=C; B!=D; C!=D
 
     // ABCD * D = DCBA
