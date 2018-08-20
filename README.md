@@ -111,7 +111,7 @@ The complete source is [multiplication.hs](multiplication.hs)
 MiniKanren is a logic programming language, like Prolog. This is the
 first time I've written a MiniKanren program.
 
-Here's the main implementation, without the helper functions.
+Here's the main implementation, with helper functions not shown.
 
 ```scheme
 ; a,b,c,d -> 1000*a + 100b + 10c + d
