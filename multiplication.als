@@ -18,10 +18,10 @@ one sig S {
 	SingleDigit[C]
 	SingleDigit[D]
 
-	let first = mul[D,D], 
-		second = mul[C,D] + carry[first],
-		third = mul[B,D] + carry[second],
-		fourth = mul[A,D] + carry[third] |
+	let first = integer/mul[D,D], 
+		second = integer/mul[C,D] + carry[first],
+		third = integer/mul[B,D] + carry[second],
+		fourth = integer/mul[A,D] + carry[third] |
 		digit[first] = A and 
 		digit[second] = B and
 		digit[third] = C and
@@ -48,8 +48,5 @@ fact AllDifferent {
 	B != D
 	C != D
 }
-
-
-
 
 run {} for 1 S, 8 Int
