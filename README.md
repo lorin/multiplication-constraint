@@ -1,9 +1,10 @@
 # Multiplication constraint problem
 
-My son was given the following math problem as a rising sixth grader.
+My son was given several math problem over the summer as a rising sixth grader.
+this was one of them:
 
-In the following multiplication, A, B, C and D represent different digits. What
-is the answer for the multiplication?
+*In the following multiplication, A, B, C and D represent different digits. What
+is the answer for the multiplication?*
 
 ````
 ABCD
