@@ -13,10 +13,10 @@ one sig S {
 	C : Int,
 	D:  Int
 } {
-	SingleDigit[A]
-	SingleDigit[B]
-	SingleDigit[C]
-	SingleDigit[D]
+	IsSingleDigit[A]
+	IsSingleDigit[B]
+	IsSingleDigit[C]
+	IsSingleDigit[D]
 
 	let first = integer/mul[D,D], 
 		second = integer/mul[C,D] + carry[first],
@@ -36,7 +36,7 @@ fun carry[x : Int] : Int {
 	integer/div[x,10]
 }
 
-pred SingleDigit[d : Int] {
+pred IsSingleDigit[d : Int] {
 	d>=0 and d<10
 }
 

@@ -22,20 +22,21 @@ like:
 
 ```alloy
 fact MultiplicatinProblem {
-    Digit = {0,1,2,3,4,5,6,7,8,9} // : Not valid Alloy
-    A in Digit
-    B in Digit
-    C in Digit
-    D in Digit
+	IsSingleDigit[A]
+	IsSingleDigit[B]
+	IsSingleDigit[C]
+	IsSingleDigit[D]
     A !=B ; A!=C ; A!= D; B!=C; B!=D; C!=D
 
-    // Not valid Alloy, need to use mul for multiplication
-    (1000*A + 100*B + 10*C + D)*D = 1000*D + 100*C + 10*B + A
+    // ABCD * D = DCBA
+    mul[D, mul[1000,A] + mul[100,B] + mul[10,C] + D] = mul[1000,D] + mul[100,C] + mul[10,B] + A
 }
 ```
 
-However, I couldn't figure out how to specify it like this. Instead, I
-implemented multi-digit multiplication explicitly in Alloy, like this:
+However, I gave up waiting for the solver to find a solution.
+
+To speed things up, I constrained the possible integers to a much smaller space
+and implemented multi-digit multiplication explicitly in Alloy:
 
 ```alloy
 one sig S {
@@ -44,11 +45,10 @@ one sig S {
 	C : Int,
 	D:  Int
 } {
-    // A,B,C,D are single digits
-	SingleDigit[A]
-	SingleDigit[B]
-	SingleDigit[C]
-	SingleDigit[D]
+	IsSingleDigit[A]
+	IsSingleDigit[B]
+	IsSingleDigit[C]
+	IsSingleDigit[D]
 
 	let first = integer/mul[D,D],
 		second = integer/mul[C,D] + carry[first],
@@ -69,7 +69,7 @@ fact AllDifferent {
 	C != D
 }
 
-// digit, carry, SingleDigit helper functions not shown here
+// digit, carry, IsSingleDigit helper functions not shown here
 
 run {} for 1 S, 8 Int
 ```
