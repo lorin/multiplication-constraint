@@ -1,3 +1,10 @@
+	/*
+		ABCD
+		*  D
+		----
+		DCBA
+	*/
+
 open util/integer as integer
 
 one sig S { 
@@ -11,27 +18,27 @@ one sig S {
 	SingleDigit[C]
 	SingleDigit[D]
 
-	// ABCD * D = DCBA
 	let first = mul[D,D], 
 		  second = mul[C,D] + carry[first],
-			third = mul[B,D] + carry[second] |
-		digit[first]= A and 
+			third = mul[B,D] + carry[second],
+			fourth = mul[A,D] + carry[third] |
+		digit[first] = A and 
 		digit[second] = B and
-		digit[third] = C
+		digit[third] = C and
+		digit[fourth] = D
 }
 
 fun digit[x : Int]: Int {
-	rem[x, 10]
+	integer/rem[x, 10]
 }
 
 fun carry[x : Int] : Int {
-	div[x,10]
+	integer/div[x,10]
 }
 
 pred SingleDigit[d : Int] {
 	d>=0 and d<10
 }
-
 
 fact AllDifferent {
 	A != B
@@ -43,8 +50,6 @@ fact AllDifferent {
 }
 
 
-pred show() {
-	one S
-}
 
-run show for 8 Int
+
+run {} for 1 S, 8 Int
