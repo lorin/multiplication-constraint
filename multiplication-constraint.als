@@ -1,21 +1,43 @@
-open util/natural as nat
+open util/integer as integer
 
-sig Digit extends nat/Natural {}
+one sig S { 
+	A : Int,
+	B : Int,
+	C : Int,
+	D:  Int
+} {
+	SingleDigit[A]
+	SingleDigit[B]
+	SingleDigit[C]
+	SingleDigit[D]
 
-sig A,B,C,D extends Digit {}
-
-fact DigitLessThanTen {
-	all d : Digit | nat/lt[d,10]
+	// ABCD * D = DCBA
+	let first = mul[D,D] |
+		digit[first]= A
+		rem[mul[D,C] + div[mul[D,D],10],10] = B
 }
 
-fact Singletons {
-	one A
-	one B
-	one C
-	one D
+fun digit[x : Int]: Int {
+	rem[x, 10]
+}
+
+pred SingleDigit[d : Int] {
+	d>=0 and d<10
 }
 
 
-pred show() {}
+fact AllDifferent {
+	A != B
+	A != C
+	A != D
+	B != C
+	B != D
+	C != D
+}
 
-run show for 4
+
+pred show() {
+	one S
+}
+
+run show for 7 Int
