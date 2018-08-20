@@ -1,9 +1,9 @@
-	/*
-		ABCD
-		*  D
-		----
-		DCBA
-	*/
+/*
+    ABCD
+    *  D
+    ----
+    DCBA
+*/
 
 open util/integer as integer
 
@@ -19,9 +19,9 @@ one sig S {
 	SingleDigit[D]
 
 	let first = mul[D,D], 
-		  second = mul[C,D] + carry[first],
-			third = mul[B,D] + carry[second],
-			fourth = mul[A,D] + carry[third] |
+		second = mul[C,D] + carry[first],
+		third = mul[B,D] + carry[second],
+		fourth = mul[A,D] + carry[third] |
 		digit[first] = A and 
 		digit[second] = B and
 		digit[third] = C and
