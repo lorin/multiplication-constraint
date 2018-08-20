@@ -1,8 +1,9 @@
 #lang racket
 (require minikanren)
+(require minikanren/numbers)
 
 (define nullo
-  (lambda (x) (= '() x)))
+  (lambda (x) (== '() x)))
 
 (define caro
   (lambda (p a)
@@ -19,7 +20,7 @@
     (caro l x)))
 
 (define succeed (== #f #f))
-
+ 
 (define fail (== #f #t))
 
 (define membero
@@ -27,16 +28,19 @@
     (conde
      ((nullo l) fail)
      ((eq-caro l x) succeed)
-     (else
+     (succeed 
       (fresh (d)
              (cdro l d)
              (membero x d))))))
 
-
 (define digits '(0 1 2 3 4 5 6 7 8 9))
 
 (run 1 (q)
-     (fresh (a b c d)
+     (fresh (a b c d tenc)
+            (numbero a)
+            (numbero b)
+            (numbero c)
+            (numbero d)
             (membero a digits)
             (membero b digits)
             (membero c digits)
@@ -47,5 +51,9 @@
             (=/= b c)
             (=/= b d)
             (=/= c d)
-            (== q `(,a,b,c,d))
+            (*o (build-num 10) (build-num 3) tenc)
+            (== q tenc)
+            ; (== (* d (+ (* 1000 a) (* 100 b) (* 10 c) d)) (+ (* 1000 d) (* 100 c) (* 10 b) a))
+                         
+            ; (== q `(,a,b,c,d))
      ))
