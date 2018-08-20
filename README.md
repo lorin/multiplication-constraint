@@ -37,7 +37,7 @@ fact MultiplicatinProblem {
 However, I gave up waiting for the solver to find a solution.
 
 To speed things up, I constrained the possible integers to a much smaller space
-and implemented multi-digit multiplication explicitly in Alloy:
+(8 bit integers instead of 15 bit) and implemented multi-digit multiplication explicitly in Alloy:
 
 ```alloy
 one sig S {
