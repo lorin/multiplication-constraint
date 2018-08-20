@@ -33,14 +33,19 @@
              (cdro l d)
              (membero x d))))))
 
-(define digits '(0 1 2 3 4 5 6 7 8 9))
+(define digits (map build-num '(0 1 2 3 4 5 6 7 8 9)))
+
+(define to-int
+  (lambda (l)
+    (cond
+      ((null? l) 0)
+      (else
+       (+ (car l) (* 2 (to-int (cdr l))))))))
+  
+(map to-int   
 
 (run 1 (q)
-     (fresh (a b c d tenc)
-            (numbero a)
-            (numbero b)
-            (numbero c)
-            (numbero d)
+     (fresh (a b c d)
             (membero a digits)
             (membero b digits)
             (membero c digits)
@@ -51,9 +56,20 @@
             (=/= b c)
             (=/= b d)
             (=/= c d)
-            (*o (build-num 10) (build-num 3) tenc)
-            (== q tenc)
+            (fresh (ten hundred thousand tha hub tec thahub tencd abcd)
+                   (== (build-num 10) ten)
+                   (== (build-num 100) hundred)
+                   (== (build-num 1000) thousand)
+                   (*o thousand a tha)
+                   (*o hundred b hub)
+                   (*o ten c tec)
+                   (pluso tha hub thahub)
+                   (pluso tec d tencd)
+                   (pluso thahub tencd abcd)
+                   (== q abcd)
+                   
             ; (== (* d (+ (* 1000 a) (* 100 b) (* 10 c) d)) (+ (* 1000 d) (* 100 c) (* 10 b) a))
                          
             ; (== q `(,a,b,c,d))
-     ))
+
+                   ))))
