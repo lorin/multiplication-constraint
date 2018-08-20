@@ -12,9 +12,12 @@ one sig S {
 	SingleDigit[D]
 
 	// ABCD * D = DCBA
-	let first = mul[D,D] |
+	let first = mul[D,D], 
+		  second = mul[C,D] + carry[first],
+			third = mul[B,D] + carry[second] |
 		digit[first]= A and 
-		digit[mul[D,C] + carry[first]] = B
+		digit[second] = B and
+		digit[third] = C
 }
 
 fun digit[x : Int]: Int {
@@ -44,4 +47,4 @@ pred show() {
 	one S
 }
 
-run show for 7 Int
+run show for 8 Int
