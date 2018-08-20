@@ -22,21 +22,20 @@ like:
 
 ```alloy
 fact MultiplicatinProblem {
-    Digit = {0,1,2,3,4,5,6,7,8,9}
+    Digit = {0,1,2,3,4,5,6,7,8,9} // : Not valid Alloy
     A in Digit
     B in Digit
     C in Digit
     D in Digit
     A !=B ; A!=C ; A!= D; B!=C; B!=D; C!=D
+
+    // Not valid Alloy, need to use mul for multiplication
     (1000*A + 100*B + 10*C + D)*D = 1000*D + 100*C + 10*B + A
 }
 ```
 
-However, Alloy requires that you explicitly specify the size of the integers.
-You need to specify a very wide range for something like the above to work, and
-that makes the search space too large.
-
-Instead, I implemented multi-digit multiplication, like this:
+However, I couldn't figure out how to specify it like this. Instead, I
+implemented multi-digit multiplication explicitly in Alloy, like this:
 
 ```alloy
 one sig S {
@@ -45,6 +44,7 @@ one sig S {
 	C : Int,
 	D:  Int
 } {
+    // A,B,C,D are single digits
 	SingleDigit[A]
 	SingleDigit[B]
 	SingleDigit[C]
@@ -69,8 +69,7 @@ fact AllDifferent {
 	C != D
 }
 
-// digit, carry, SingleDigit helper functions not shown her
-
+// digit, carry, SingleDigit helper functions not shown here
 
 run {} for 1 S, 8 Int
 ```
