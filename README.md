@@ -79,8 +79,8 @@ The complete source is [multiplication.als](multiplication.als)
 
 ## Haskell
 
-Haskell was the most straightforward, albeit using a brute-force approach.
-I used the List monad, which looks quite elegant to me.
+I found Haskell to be the most straightforward. I used the List monad, which
+looks quite elegant to me.
 
 ```haskell
 solution :: [Int]
