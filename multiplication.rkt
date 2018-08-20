@@ -41,7 +41,7 @@
       ((null? l) 0)
       (else
        (+ (car l) (* 2 (to-int (cdr l))))))))
-  
+
 (map to-int   
 
 (run 1 (q)
@@ -56,7 +56,10 @@
             (=/= b c)
             (=/= b d)
             (=/= c d)
-            (fresh (ten hundred thousand tha hub tec thahub tencd abcd)
+            (fresh (ten hundred thousand
+                    tha hub tec thahub tecd abcd
+                    thd huc teb thdhuc teba dcba
+                    abcdtd)
                    (== (build-num 10) ten)
                    (== (build-num 100) hundred)
                    (== (build-num 1000) thousand)
@@ -64,12 +67,15 @@
                    (*o hundred b hub)
                    (*o ten c tec)
                    (pluso tha hub thahub)
-                   (pluso tec d tencd)
-                   (pluso thahub tencd abcd)
+                   (pluso tec d tecd)
+                   (pluso thahub tecd abcd)
+                   (*o thousand d thd)
+                   (*o hundred c huc)
+                   (*o ten b teb)
+                   (pluso thd huc thdhuc)
+                   (pluso teb a teba)
+                   (pluso thdhuc teba dcba)
+                   (*o abcd d abcdtd)
+                   (== abcdtd dcba)
                    (== q abcd)
-                   
-            ; (== (* d (+ (* 1000 a) (* 100 b) (* 10 c) d)) (+ (* 1000 d) (* 100 c) (* 10 b) a))
-                         
-            ; (== q `(,a,b,c,d))
-
                    ))))
