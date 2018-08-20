@@ -33,13 +33,22 @@
              (cdro l d)
              (membero x d))))))
 
-(define digits (map build-num '(0 1 2 3 4 5 6 7 8 9)))
-
 (define ten (build-num 10))
 (define hundred (build-num 100))
 (define thousand (build-num 1000))
 
+(define from-digits 
+  (lambda (a b c d abcd)
+      (fresh (tha hub tec thahub tecd)
+        (*o thousand a tha)
+        (*o hundred b hub)
+        (*o ten c tec)
+        (pluso tha hub thahub)
+        (pluso tec d tecd)
+        (pluso thahub tecd abcd))))
+
 (define solution
+  (let ((digits (map build-num '(0 1 2 3 4 5 6 7 8 9))))
   (run 1 (q)
     (fresh (a b c d)
       (membero a digits)
@@ -52,24 +61,12 @@
       (=/= b c)
       (=/= b d)
       (=/= c d)
-      (fresh (tha hub tec thahub tecd abcd
-                  thd huc teb thdhuc teba dcba
-                  abcdtd)
-        (*o thousand a tha)
-        (*o hundred b hub)
-        (*o ten c tec)
-        (pluso tha hub thahub)
-        (pluso tec d tecd)
-        (pluso thahub tecd abcd)
-        (*o thousand d thd)
-        (*o hundred c huc)
-        (*o ten b teb)
-        (pluso thd huc thdhuc)
-        (pluso teb a teba)
-        (pluso thdhuc teba dcba)
+      (fresh (abcd dcba abcdtd)
+        (from-digits a b c d abcd)
+        (from-digits d c b a dcba)
         (*o abcd d abcdtd)
         (== abcdtd dcba)
-        (== q abcd)))))
+        (== q abcd))))))
 
 (define to-int
   (lambda (l)
