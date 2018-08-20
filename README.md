@@ -15,4 +15,4 @@ I thought this would be good practice for different languages.
 
 ## Alloy
 
-
+See [multiplication-constraint.als](multiplication-constraint.als)
