@@ -13,12 +13,16 @@ one sig S {
 
 	// ABCD * D = DCBA
 	let first = mul[D,D] |
-		digit[first]= A
-		rem[mul[D,C] + div[mul[D,D],10],10] = B
+		digit[first]= A and 
+		digit[mul[D,C] + carry[first]] = B
 }
 
 fun digit[x : Int]: Int {
 	rem[x, 10]
+}
+
+fun carry[x : Int] : Int {
+	div[x,10]
 }
 
 pred SingleDigit[d : Int] {
