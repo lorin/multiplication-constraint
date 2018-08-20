@@ -41,19 +41,21 @@
 ; These two definitions solve the problem
 ;
 
+; a,b,c,d -> 1000*a + 100b + 10c + d
 (define from-digits 
   (lambda (a b c d abcd)
     (let ((ten (build-num 10))
           (hundred (build-num 100))
           (thousand (build-num 1000)))
-      (fresh (tha hub tec thahub tecd)
-        (*o thousand a tha)
-        (*o hundred b hub)
-        (*o ten c tec)
-        (pluso tha hub thahub)
-        (pluso tec d tecd)
-        (pluso thahub tecd abcd)))))
+      (fresh (a000 b00 c0 ab00 cd)
+        (*o thousand a a000)
+        (*o hundred b b00)
+        (*o ten c c0)
+        (pluso a000 b00 ab00)
+        (pluso c0 d cd)
+        (pluso ab00 cd abcd)))))
 
+; This solves it
 (define solution
   (let ((digits (map build-num '(0 1 2 3 4 5 6 7 8 9))))
   (run 1 (q)
