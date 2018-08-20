@@ -1,6 +1,6 @@
 import Control.Monad
 
-main = putStrLn $ show solution
+main = putStrLn $ foldl (++) "" (map show solution)
 
 solution :: [Int]
 solution = do
