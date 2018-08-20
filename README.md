@@ -16,7 +16,7 @@ DCBA
 I thought this type of constraint satisfaction problem would be a good excuse
 to practice with programming languages I don't often use.
 
-I solved them in [Alloy], Haskell, and [MiniKanren].
+I solved the problem in [Alloy], Haskell, and [MiniKanren].
 
 [Alloy]: http://alloytools.org
 [MiniKanren]: http://minikanren.org
