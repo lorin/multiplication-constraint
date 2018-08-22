@@ -3,7 +3,7 @@ import Data.Set (size, fromList)
 
 main = putStrLn $ foldl (++) "" (map show solution)
 
--- Check if all elements of a list are differnet
+-- True if all elements of a list are differnet
 different :: Ord a => [a] -> Bool
 different l = length l == (size . fromList) l
 
